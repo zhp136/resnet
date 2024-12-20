@@ -5,7 +5,7 @@ from torch import nn
 from torchvision.utils import make_grid
 from torch.utils.data import random_split
 from torch.utils.tensorboard import SummaryWriter
-from models import SRResNet
+from models import ResNet
 from datasets import SRDataset
 from utils import *
 
@@ -39,7 +39,7 @@ def main():
     conf = parse_args()
 
     # 初始化
-    model = SRResNet(large_kernel_size=large_kernel_size,
+    model = ResNet(large_kernel_size=large_kernel_size,
                         small_kernel_size=small_kernel_size,
                         n_channels=n_channels,
                         n_blocks=n_blocks,
@@ -80,7 +80,7 @@ def main():
                                             shuffle=True, 
                                             pin_memory=True)
 
-    modelweightfile = f'results/checkpoint_srresnet.pth'
+    modelweightfile = f'results/checkpoint_resnet.pth'
 
     def train(model, loss, train_dataloader, optimizer, epoch):
         model.train()

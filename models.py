@@ -129,9 +129,9 @@ class ResidualBlock(nn.Module):
         return output
 
 
-class SRResNet(nn.Module):
+class ResNet(nn.Module):
     """
-    SRResNet模型
+    ResNet模型
     """
     def __init__(self, large_kernel_size=9, small_kernel_size=3, n_channels=64, n_blocks=16, scaling_factor=4):
         """
@@ -141,7 +141,7 @@ class SRResNet(nn.Module):
         :参数 n_blocks: 残差模块数
         :参数 scaling_factor: 放大比例
         """
-        super(SRResNet, self).__init__()
+        super(ResNet, self).__init__()
 
         # 放大比例必须为 2、 4 或 8
         scaling_factor = int(scaling_factor)
@@ -190,7 +190,7 @@ class SRResNet(nn.Module):
 
 class Generator(nn.Module):
     """
-    生成器模型，其结构与SRResNet完全一致.
+    生成器模型，其结构与ResNet完全一致.
     """
 
     def __init__(self, large_kernel_size=9, small_kernel_size=3, n_channels=64, n_blocks=16, scaling_factor=4):
@@ -202,7 +202,7 @@ class Generator(nn.Module):
         参数 scaling_factor: 放大比例
         """
         super(Generator, self).__init__()
-        self.net = SRResNet(large_kernel_size=large_kernel_size, small_kernel_size=small_kernel_size,
+        self.net = ResNet(large_kernel_size=large_kernel_size, small_kernel_size=small_kernel_size,
                             n_channels=n_channels, n_blocks=n_blocks, scaling_factor=scaling_factor)
 
     def forward(self, lr_imgs):
