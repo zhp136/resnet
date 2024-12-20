@@ -2,7 +2,7 @@ import torchvision
 from utils import *
 from torch import nn
 from datasets import SRDataset
-from models import SRResNet,Generator
+from models import ResNet,Generator
 import time
 import torch
 import torch.nn.functional as F
@@ -55,8 +55,8 @@ if __name__ == '__main__':
     # 测试集目录
     data_folder = "./data/"
 
-    # 加载模型SRResNet 或 SRGAN
-    model = torch.load("./results/checkpoint_srresnet.pth")
+    # 加载模型ResNet
+    model = torch.load("./results/checkpoint_resnet.pth")
     model.eval()
 
     # 定制化数据加载器
