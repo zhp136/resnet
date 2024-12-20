@@ -1,6 +1,8 @@
 # resnet
 图像超分辨
 
+数据集请自行网上下载并放在data指定文件夹下
+
 1.create.py创建图像目录.json文件
 
 2.train.py训练模型
